@@ -2,7 +2,7 @@ package com.ysk.jikenews.model;
 
 import java.util.List;
 
-public class NewsBean {
+public class NewsBean {//本段代码调用GsonFormat插件自动生成，生成后就有能装解析出来的数据的实体类
    // public String reason;
     public Result result;
    // public int error_code;

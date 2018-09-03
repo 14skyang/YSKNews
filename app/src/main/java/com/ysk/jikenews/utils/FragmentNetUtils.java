@@ -73,10 +73,10 @@ public class FragmentNetUtils {
 
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
-                Log.d(TAG, "请求成功");
-                Log.d(">>>onResponse>>>当前线程", Thread.currentThread().getName());
+               // Log.d(TAG, "请求成功");
+               // Log.d(">>>onResponse>>>当前线程", Thread.currentThread().getName());
                 final String responseData = response.body().string();
-                Log.d(TAG, responseData);
+               // Log.d(TAG, responseData);
                 parseData(responseData);
 //                activity.runOnUiThread(new Runnable() {
 //                    @Override
@@ -88,23 +88,23 @@ public class FragmentNetUtils {
         });
     }
 
-    public void parseData(String responseData) {
-        Log.i(TAG, "加载到parseData()");
+    public void parseData(String responseData) {//通过谷歌官方的解析库Gson来解析成我们要的格式，这里解析成了一个List
+      //  Log.i(TAG, "加载到parseData()");
         Gson gson = new Gson();
         NewsBean newsBean = gson.fromJson(responseData, NewsBean.class);
         NewsBean.Result result = newsBean.result;
         final List<NewsBean.Result.Data> datas = result.data;
-        Log.d(">>>>>>>解析的标题：", datas.get(0).getTitle().toString());
+       // Log.d(">>>>>>>解析的标题：", datas.get(0).getTitle().toString());
         showResponse(datas);
-    }
+    }//已经获取到我们想要的全部数据了，接下来就是放进界面的过程，即放入RecyclerView，需要一个自定义NewsAdapter来将RecyclerView和数据关联起来
 
 
     public void showResponse(final List<NewsBean.Result.Data> datas) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Log.d("parseData>>>当前线程", Thread.currentThread().getName());
-                Log.i(TAG, "加载到showResponse: datasize="+datas.size());
+               // Log.d("parseData>>>当前线程", Thread.currentThread().getName());
+               // Log.i(TAG, "加载到showResponse: datasize="+datas.size());
                 LinearLayoutManager manager = new LinearLayoutManager(context);
                 recyclerView.setLayoutManager(manager);
                 NewsAdapter adapter = new NewsAdapter(datas);

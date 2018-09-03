@@ -16,7 +16,7 @@ import com.ysk.jikenews.model.NewsBean;
 
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {//自定义NewsAdapter来将RecyclerView和数据关联起来：
 
     private List<NewsBean.Result.Data> mNewsList;//把NewsBean类中的内部类Data创建成一个表
 
@@ -58,10 +58,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.newsTitle.setText(news.getTitle());//通过newsbean的得到数据
         holder.newsSrc.setText(news.getAuthor_name());
         holder.newsTime.setText(news.getDate());
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {//在Adapter中传值(url)给newsInfoActivity的webView
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),NewsInfoActivity.class);
+                Intent intent = new Intent(v.getContext(),NewsInfoActivity.class);//点击新闻后跳转新闻详细页即一个webView
                 intent.putExtra("url",news.getUrl());//键名和键值
                 v.getContext().startActivity(intent);//Intent背负着信使的荣誉称号进行传值
             }

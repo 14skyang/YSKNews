@@ -16,14 +16,14 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("BaseActivity", getClass().getSimpleName()+"启动");
+       // Log.d("BaseActivity", getClass().getSimpleName()+"启动");
         ActivityController.addActivity(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("BaseActivity", "活动销毁:"+getClass().getSimpleName());
+       // Log.d("BaseActivity", "活动销毁:"+getClass().getSimpleName());
         ActivityController.removeActivity(this);
 
     }

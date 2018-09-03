@@ -41,10 +41,10 @@ public class NewsInfoActivity extends BaseActivity implements View.OnClickListen
 //                handler.proceed();
 //            }
 //        });
-        Intent intent = getIntent();
+        Intent intent = getIntent();//接收来自NewsAdapter的传来的url
         String url = intent.getStringExtra("url");
-        Log.d(TAG, "我的Url"+url);
-        webView.loadUrl(url);
+        //Log.d(TAG, "我的Url"+url);
+        webView.loadUrl(url);//打开url指向的网页
     }
 
 
