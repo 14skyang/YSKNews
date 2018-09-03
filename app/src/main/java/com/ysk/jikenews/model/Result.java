@@ -35,7 +35,7 @@ public class Result {
         return content;
     }
 
-    public void setImg_width(String img_width) {
+   /* public void setImg_width(String img_width) {
         this.img_width = img_width;
     }
 
@@ -57,7 +57,7 @@ public class Result {
 
     public String getPdate() {
         return pdate;
-    }
+    }*/
 
     public void setSrc(String src) {
         this.src = src;
@@ -67,7 +67,7 @@ public class Result {
         return src;
     }
 
-    public void setImg_length(String img_length) {
+ /*   public void setImg_length(String img_length) {
         this.img_length = img_length;
     }
 
@@ -97,7 +97,7 @@ public class Result {
 
     public String getPdate_src() {
         return pdate_src;
-    }
+    }*/
 
     @Override
     public String toString() {

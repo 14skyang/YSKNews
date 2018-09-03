@@ -3,9 +3,9 @@ package com.ysk.jikenews.model;
 import java.util.List;
 
 public class NewsBean {
-    public String reason;
+   // public String reason;
     public Result result;
-    public int error_code;
+   // public int error_code;
 
     public class Result{
         public String stat;
@@ -13,11 +13,11 @@ public class NewsBean {
         public class Data{
             public String title;
             public String date;
-            public String category;
+            //public String category;
             public String author_name;
             public String url;
             public String thumbnail_pic_s;
-            public String thumbnail_pic_s02;
+           // public String thumbnail_pic_s02;
 
             public String getTitle() {
                 return title;
@@ -35,35 +35,35 @@ public class NewsBean {
                 this.date = date;
             }
 
-            public String getCategory() {
+          /*  public String getCategory() {
                 return category;
             }
 
             public void setCategory(String category) {
                 this.category = category;
-            }
+            }*/
 
             public String getAuthor_name() {
                 return author_name;
             }
 
-            public void setAuthor_name(String author_name) {
+           /* public void setAuthor_name(String author_name) {
                 this.author_name = author_name;
-            }
+            }*/
 
             public String getUrl() {
                 return url;
             }
 
-            public void setUrl(String url) {
+         /*   public void setUrl(String url) {
                 this.url = url;
-            }
+            }*/
 
             public String getThumbnail_pic_s() {
                 return thumbnail_pic_s;
             }
 
-            public void setThumbnail_pic_s(String thumbnail_pic_s) {
+/*            public void setThumbnail_pic_s(String thumbnail_pic_s) {
                 this.thumbnail_pic_s = thumbnail_pic_s;
             }
 
@@ -73,7 +73,7 @@ public class NewsBean {
 
             public void setThumbnail_pic_s02(String thumbnail_pic_s02) {
                 this.thumbnail_pic_s02 = thumbnail_pic_s02;
-            }
+            }*/
         }
     }
 }

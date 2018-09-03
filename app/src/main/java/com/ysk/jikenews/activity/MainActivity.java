@@ -1,29 +1,16 @@
 package com.ysk.jikenews.activity;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.ysk.jikenews.BaseActivity;
 import com.ysk.jikenews.R;
 import com.ysk.jikenews.adapter.MyFragmentPagerAdapter;
-import com.ysk.jikenews.utils.ToastUtil;
-
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -32,10 +19,13 @@ public class MainActivity extends BaseActivity {
 
 //    private SwipeRefreshLayout swipeRefresh;    //下拉刷新
 
+
     private TabLayout tabLayout;
 
     private ViewPager viewPager;
-
+   /* Viewpager使用起来就是通过创建adapter给它填充多个view，左右滑动时，切换不同的view。
+    Google官方是建议我们使用Fragment来填充ViewPager的，这样 可以更加方便的生成每个Page，
+    以及管理每个Page的生命周期*/
     private MyFragmentPagerAdapter pagerAdapter;
 
     private TabLayout.Tab one;
@@ -48,12 +38,8 @@ public class MainActivity extends BaseActivity {
     private TabLayout.Tab eight;
     private TabLayout.Tab nine;
     private TabLayout.Tab ten;
+   // TabLayout配合着ViewPager和Fragment的使用，TabLayout可以打造一个滑动标签页，非常方便
 
-    private ImageView header_bg;
-
-    private TextView username_txt;
-
-    private TextView email_txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,14 +75,14 @@ public class MainActivity extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();//getSupportActionBar()一定要在setSupportActionBar(Toolbar toolbar)之后调用
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            //actionBar.setHomeAsUpIndicator(R.drawable.menu);
+            actionBar.setDisplayHomeAsUpEnabled(true);//隐藏actionbar
         }
 
     }
-    private boolean isAppInstalled(Context context, String uri) {
+
+   /* private boolean isAppInstalled(Context context, String uri) {
         PackageManager pm = context.getPackageManager();
         boolean installed;
         try {
@@ -106,8 +92,8 @@ public class MainActivity extends BaseActivity {
             installed = false;
         }
         return installed;
-    }
-    private void refreshNews() {
+    }*/
+    /*private void refreshNews() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -119,7 +105,7 @@ public class MainActivity extends BaseActivity {
 //                swipeRefresh.setRefreshing(false);
             }
         });
-    }
+    }*/
 
 }
 

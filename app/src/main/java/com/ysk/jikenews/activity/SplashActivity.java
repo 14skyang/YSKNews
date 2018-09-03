@@ -11,15 +11,15 @@ import android.view.WindowManager;
 import com.ysk.jikenews.BaseActivity;
 import com.ysk.jikenews.R;
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity {//应用引导页
 
-    private static final long DELAY_TIME = 3000L;
+    private static final long DELAY_TIME = 3000L;//停留时长
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= 21) {  //当系统版本大于5.0时执行
-            View decorView = getWindow().getDecorView();
+            View decorView = getWindow().getDecorView();//使用了BaseActivity类的方法
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE //两个FLAG一起用表示会让应用的主体内容占用系统状态栏的空间
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;    //让应用的主体内容占用系统导航栏的空间

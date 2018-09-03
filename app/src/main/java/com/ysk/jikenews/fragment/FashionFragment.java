@@ -19,7 +19,9 @@ public class FashionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //View onCreateView()创建该fragment对应的视图
         View view = inflater.inflate(R.layout.fragment_fashion, container, false);
+        //LayoutInflater类的inflate方法适用于所有需要进行布局填充的场景
         recyclerView = view.findViewById(R.id.fashion_recycler_view);
         FragmentNetUtils utils = new FragmentNetUtils(recyclerView,view.getContext(),getActivity());
         if (!FragmentNetUtils.isNetworkAvailable(view.getContext())) {

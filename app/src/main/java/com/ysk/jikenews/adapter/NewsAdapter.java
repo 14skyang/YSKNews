@@ -18,7 +18,7 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    private List<NewsBean.Result.Data> mNewsList;
+    private List<NewsBean.Result.Data> mNewsList;//把NewsBean类中的内部类Data创建成一个表
 
     public NewsAdapter(List<NewsBean.Result.Data> mNewsList) {
         this.mNewsList = mNewsList;
@@ -30,7 +30,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         private TextView newsTitle;
         private TextView newsSrc;
         private TextView newsTime;
-        public ViewHolder(View view) {
+        public ViewHolder(View view) {//自定义类 ViewHolder 来减少 findViewById() 的使用
             super(view);
             linearLayout = view.findViewById(R.id.linear_layout);
             newsImage = view.findViewById(R.id.iv_news_list_image);
@@ -49,19 +49,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final NewsBean.Result.Data news = mNewsList.get(position);
+        final NewsBean.Result.Data news = mNewsList.get(position);//创建NewsBean类的内部类Data类的常量实例对象news
         String image = news.getThumbnail_pic_s().toString();
 //        Log.i(">>>adapter>>>>>image", mNewsList.get(0).getThumbnail_pic_s());
-        Glide.with(holder.itemView.getContext()).load(image).into(holder.newsImage);
-        holder.newsTitle.setText(news.getTitle());
+        Glide.with(holder.itemView.getContext())
+                .load(image)
+                .into(holder.newsImage);//使用Glide框架引入新闻图片，至少三个参数：with(context)，load(url),into(imageView)
+        holder.newsTitle.setText(news.getTitle());//通过newsbean的得到数据
         holder.newsSrc.setText(news.getAuthor_name());
         holder.newsTime.setText(news.getDate());
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),NewsInfoActivity.class);
-                intent.putExtra("url",news.getUrl());
-                v.getContext().startActivity(intent);
+                intent.putExtra("url",news.getUrl());//键名和键值
+                v.getContext().startActivity(intent);//Intent背负着信使的荣誉称号进行传值
             }
         });
     }

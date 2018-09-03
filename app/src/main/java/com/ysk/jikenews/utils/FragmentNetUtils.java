@@ -41,7 +41,7 @@ public class FragmentNetUtils {
      * 检测当的网络（WLAN、3G/2G）状态
      * @return true 表示网络可用
      */
-    public static boolean isNetworkAvailable(Context context1) {
+    public static boolean isNetworkAvailable(Context context1) {//安卓内置检测网络
         ConnectivityManager connectivity = (ConnectivityManager) context1
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {
@@ -50,17 +50,18 @@ public class FragmentNetUtils {
                 // 当前网络是连接的
                 if (info.getState() == NetworkInfo.State.CONNECTED) {
                     // 当前所连接的网络可用
-                    return true;
+                    return true;//true是布尔型数据
                 }
             }
         }
         return false;
     }
 
-    public void asyncHttpRequest(String type){
+    public void asyncHttpRequest(String type){ //利用okhttp3库的网络请求
         Log.i(TAG, "加载到asyncHttpRequest()");
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
+                //.url("http://apicloud.mob.com/wx/article/category/query?key=2799678a59dbc")
                 .url("http://v.juhe.cn/toutiao/index?type="+type+"&key=ab98c33f42434cc684bb9512bee5249a")
                 .build();
         okhttp3.Call call = client.newCall(request);

@@ -43,7 +43,7 @@ public class NetworkUtil {
         return networkUtil;
     }
 
-    class StringCallBack implements Callback {
+   /* class StringCallBack implements Callback {
         private HttpCallBack httpCallBack;
         private Request request;
 
@@ -77,9 +77,9 @@ public class NetworkUtil {
                 });
             }
         }
-    }
+    }*/
 
-    public void asyncGet(String url, HttpCallBack httpCallBack) {
+    /*public void asyncGet(String url, HttpCallBack httpCallBack) {
         Request request = new Request.Builder().url(url).build();
         okHttpClient.newCall(request).enqueue(new StringCallBack(request, httpCallBack));
     }
@@ -89,7 +89,7 @@ public class NetworkUtil {
         Request request = new Request.Builder().url(url).post(formBody).build();
         okHttpClient.newCall(request).enqueue(new StringCallBack(request, httpCallBack));
     }
-
+*/
     public interface HttpCallBack {
         void onError(Request request, IOException e);
 

@@ -7,7 +7,7 @@ public class JsonRootBean {
     private List<Result> result;
     private int error_code;
     private String reason;
-    public void setResult(List<Result> result) {
+    /*public void setResult(List<Result> result) {
         this.result = result;
     }
     public List<Result> getResult() {
@@ -26,6 +26,6 @@ public class JsonRootBean {
     }
     public String getReason() {
         return reason;
-    }
+    }*/
 
 }

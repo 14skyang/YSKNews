@@ -3,7 +3,7 @@ package com.ysk.jikenews.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -22,7 +22,7 @@ public class NewsInfoActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_info);
         initSystemBar(true);
-        backImage = findViewById(R.id.tool_bar_back);
+        backImage = findViewById(R.id.tool_bar_back);//返回按键
         webView = findViewById(R.id.web_view);
         //设置标题栏Toolbar
 

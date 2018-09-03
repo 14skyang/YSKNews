@@ -53,11 +53,11 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return mTitles.length;
-    }
+    } //返回标题长度
 
     @Override
     public CharSequence getPageTitle(int position) {
         return mTitles[position];
-    }
+    }//返回标题位置
 }
 

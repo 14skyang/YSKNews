@@ -24,7 +24,8 @@ public class TestUtil {
             public void run() {
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
-                        .url("http://api.avatardata.cn/ActNews/Query?key=6fd577efde774b92b84f308d48de5198&keyword=一加")
+                        .url("http://v.juhe.cn/toutiao/index?type=&key=ab98c33f42434cc684bb9512bee5249a")
+                        //.url("http://api.avatardata.cn/ActNews/Query?key=6fd577efde774b92b84f308d48de5198&keyword=一加")
                         .build();
                 try {
                     Response response = client.newCall(request).execute();

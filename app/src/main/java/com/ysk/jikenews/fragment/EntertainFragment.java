@@ -19,7 +19,7 @@ public class EntertainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_entertain, container, false);
+        View view = inflater.inflate(R.layout.fragment_entertain, container, false);//载入布局，inflate三个参数：resource 布局的资源id，root 填充的根视图即宽高参数，attachToRoot 是否将载入的视图宽高参数绑定到根视图中
         recyclerView = view.findViewById(R.id.entertain_recycler_view);
         FragmentNetUtils utils = new FragmentNetUtils(recyclerView,view.getContext(),getActivity());
         if (!FragmentNetUtils.isNetworkAvailable(view.getContext())) {
