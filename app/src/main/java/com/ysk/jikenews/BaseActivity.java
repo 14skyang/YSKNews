@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.ysk.jikenews.controller.ActivityController;
+//import com.ysk.jikenews.controller.ActivityController;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -17,14 +17,14 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // Log.d("BaseActivity", getClass().getSimpleName()+"启动");
-        ActivityController.addActivity(this);
+        //ActivityController.addActivity(this);//监控Activity的启动
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
        // Log.d("BaseActivity", "活动销毁:"+getClass().getSimpleName());
-        ActivityController.removeActivity(this);
+        //ActivityController.removeActivity(this);
 
     }
 

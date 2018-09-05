@@ -34,9 +34,9 @@ public class SplashActivity extends BaseActivity {//应用引导页
        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);//传值到MainActivity，让它启动
                 startActivity(intent);
-                finish();
+                finish();//结束本活动
             }
         }, DELAY_TIME);
 

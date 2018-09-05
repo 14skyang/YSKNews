@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.ysk.jikenews.activity.DataCallback;
 import com.ysk.jikenews.adapter.NewsAdapter;
 import com.ysk.jikenews.model.NewsBean;
 
@@ -31,10 +32,17 @@ public class FragmentNetUtils {
 
     private Activity activity;
 
-    public FragmentNetUtils(RecyclerView recyclerView, Context context, Activity activity) {
+    private DataCallback callback;
+
+    public void setCallback(DataCallback callback) {
+        this.callback = callback;
+    }
+
+    public FragmentNetUtils(RecyclerView recyclerView, Context context, Activity activity,DataCallback callback) {
         this.recyclerView = recyclerView;
         this.context = context;
         this.activity = activity;
+        this.callback  = callback;
     }
 
     /**
@@ -61,8 +69,8 @@ public class FragmentNetUtils {
         Log.i(TAG, "加载到asyncHttpRequest()");
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                //.url("http://apicloud.mob.com/wx/article/category/query?key=2799678a59dbc")
-                .url("http://v.juhe.cn/toutiao/index?type="+type+"&key=ab98c33f42434cc684bb9512bee5249a")
+                .url("http://v.juhe.cn/toutiao/index?type="+type+"&key=57fc7628decb7944e5ba5b92b8370eca")
+                //.url("http://v.juhe.cn/toutiao/index?type="+type+"&key=ab98c33f42434cc684bb9512bee5249a")
                 .build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
@@ -73,10 +81,10 @@ public class FragmentNetUtils {
 
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
-               // Log.d(TAG, "请求成功");
-               // Log.d(">>>onResponse>>>当前线程", Thread.currentThread().getName());
+                // Log.d(TAG, "请求成功");
+                // Log.d(">>>onResponse>>>当前线程", Thread.currentThread().getName());
                 final String responseData = response.body().string();
-               // Log.d(TAG, responseData);
+                 Log.d(TAG, responseData);
                 parseData(responseData);
 //                activity.runOnUiThread(new Runnable() {
 //                    @Override
@@ -89,12 +97,12 @@ public class FragmentNetUtils {
     }
 
     public void parseData(String responseData) {//通过谷歌官方的解析库Gson来解析成我们要的格式，这里解析成了一个List
-      //  Log.i(TAG, "加载到parseData()");
+        //  Log.i(TAG, "加载到parseData()");
         Gson gson = new Gson();
         NewsBean newsBean = gson.fromJson(responseData, NewsBean.class);
         NewsBean.Result result = newsBean.result;
         final List<NewsBean.Result.Data> datas = result.data;
-       // Log.d(">>>>>>>解析的标题：", datas.get(0).getTitle().toString());
+        // Log.d(">>>>>>>解析的标题：", datas.get(0).getTitle().toString());
         showResponse(datas);
     }//已经获取到我们想要的全部数据了，接下来就是放进界面的过程，即放入RecyclerView，需要一个自定义NewsAdapter来将RecyclerView和数据关联起来
 
@@ -103,12 +111,12 @@ public class FragmentNetUtils {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-               // Log.d("parseData>>>当前线程", Thread.currentThread().getName());
-               // Log.i(TAG, "加载到showResponse: datasize="+datas.size());
-                LinearLayoutManager manager = new LinearLayoutManager(context);
-                recyclerView.setLayoutManager(manager);
-                NewsAdapter adapter = new NewsAdapter(datas);
-                recyclerView.setAdapter(adapter);
+                // Log.d("parseData>>>当前线程", Thread.currentThread().getName());
+                // Log.i(TAG, "加载到showResponse: datasize="+datas.size());
+                Log.e("callback",callback+"");
+                Log.e("数据1",datas.size()+"=123");
+                callback.getData(datas);
+
             }
         });
 

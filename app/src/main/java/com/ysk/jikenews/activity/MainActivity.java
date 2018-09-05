@@ -102,7 +102,9 @@ public class MainActivity extends BaseActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
 //                swipeRefresh.setRefreshing(false);
+                initData();
             }
         });
     }*/
