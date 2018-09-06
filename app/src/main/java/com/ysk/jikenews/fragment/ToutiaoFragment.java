@@ -25,7 +25,7 @@ public class ToutiaoFragment extends Fragment implements DataCallback {
     private SwipeRefreshLayout swipeRefresh;
     private RecyclerView recyclerView;
     private NewsAdapter adapter;
-    private List tempData = new ArrayList();
+    private List tempData = new ArrayList();//定义原来新闻的数据列表
     private  FragmentNetUtils utils;
     @Nullable
     @Override
@@ -34,7 +34,7 @@ public class ToutiaoFragment extends Fragment implements DataCallback {
         recyclerView = view.findViewById(R.id.toutiao_recycler_view);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(manager);
-        adapter = new NewsAdapter(getActivity());
+        adapter = new NewsAdapter(getActivity());//碎片中 recyclerView用活动的适配器
         recyclerView.setAdapter(adapter);
         utils = new FragmentNetUtils(recyclerView, view.getContext(), getActivity(), this);
         //utils.setCallback(this);
@@ -82,7 +82,7 @@ public class ToutiaoFragment extends Fragment implements DataCallback {
         Log.e("数据2", mNewsList.size() + "个数");
         Log.e("adapter2", adapter + "");
         if (null != tempData && tempData.size() > 0) {
-            tempData.clear();
+            tempData.clear();//第一次请求数据之前，数据为空，请求数据之后，数据不为空，再次请求数据时，把原来数据清空
         }
         this.tempData = mNewsList;
         adapter.setData(tempData);

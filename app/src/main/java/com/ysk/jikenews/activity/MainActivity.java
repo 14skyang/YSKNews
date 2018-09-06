@@ -82,32 +82,5 @@ public class MainActivity extends BaseActivity {
 
     }
 
-   /* private boolean isAppInstalled(Context context, String uri) {
-        PackageManager pm = context.getPackageManager();
-        boolean installed;
-        try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            installed = true;
-        } catch (PackageManager.NameNotFoundException e) {
-            installed = false;
-        }
-        return installed;
-    }*/
-    /*private void refreshNews() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000); //由于刷新非常快，马上就结束了需要将线程沉睡两秒
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-//                swipeRefresh.setRefreshing(false);
-                initData();
-            }
-        });
-    }*/
-
 }
 

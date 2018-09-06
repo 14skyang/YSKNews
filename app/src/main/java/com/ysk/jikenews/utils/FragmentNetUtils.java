@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 public class FragmentNetUtils {
 
-    private static final String TAG = ">>>>>>FragmentNetUtils";
+    private static final String TAG = ">>>>>>FragmentNetUtils";//方便后面打印信息
 
     private RecyclerView recyclerView;
 
@@ -84,7 +84,7 @@ public class FragmentNetUtils {
                 // Log.d(TAG, "请求成功");
                 // Log.d(">>>onResponse>>>当前线程", Thread.currentThread().getName());
                 final String responseData = response.body().string();
-                 Log.d(TAG, responseData);
+                 Log.d(TAG, responseData);//打印接收到的json数据
                 parseData(responseData);
 //                activity.runOnUiThread(new Runnable() {
 //                    @Override
@@ -99,7 +99,7 @@ public class FragmentNetUtils {
     public void parseData(String responseData) {//通过谷歌官方的解析库Gson来解析成我们要的格式，这里解析成了一个List
         //  Log.i(TAG, "加载到parseData()");
         Gson gson = new Gson();
-        NewsBean newsBean = gson.fromJson(responseData, NewsBean.class);
+        NewsBean newsBean = gson.fromJson(responseData, NewsBean.class);//解析json数据
         NewsBean.Result result = newsBean.result;
         final List<NewsBean.Result.Data> datas = result.data;
         // Log.d(">>>>>>>解析的标题：", datas.get(0).getTitle().toString());
